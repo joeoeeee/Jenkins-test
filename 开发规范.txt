@@ -1,0 +1,22 @@
+1.php统一开发工具，使用netbeans
+2.所有命名用驼峰法，如function functionName
+3.数据库设计的时候应该避免join查询，在数据量很大的时候join十分消耗资源，所以除了
+后台的统计的代码，所有代码不再容许使用join查询。可以通过字段冗余来避免join查询 早期确实没有严格要求，这部分代码将会不断的去优化
+4.代码设计的时候，一定要注意代码的重用和并发效率，将代码抽象分装好，特别是获取数据的代码，这样方便我们
+后期从缓存（如redis，mongodb，memcache）获取读取频率高的数据
+5.做好的东西，一定要自己严格测试，如果出现问题造成公司有所损失，将会承担相应的责任
+6.有问题要及时相互沟通解决(问题停顿不超过2个小时)，保证项目进度的执行
+7.利用异常处理来写代码，是代码结构清晰可读性好，方便代码重构
+比如代码
+try {
+            if ($_POST['itemId'] == '') {
+                throw new Exception("no item");
+            }
+            if($_POST['gameServerId'] == ''){
+                throw new Exception("no game server");
+            }
+} catch (Exception $e) {
+
+}
+
+
